@@ -42,6 +42,14 @@ jobs:
       - name: Build Web App
         run: pnpm --filter @safe-fu/web build
 
+      - name: Build Admin App
+        run: pnpm --filter @safe-fu/admin build
+
+      - name: Combine Builds
+        run: |
+          mkdir -p apps/web/dist/admin
+          cp -r apps/admin/dist/* apps/web/dist/admin/
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
