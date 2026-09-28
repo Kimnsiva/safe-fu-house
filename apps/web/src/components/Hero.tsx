@@ -69,7 +69,7 @@ export function Hero() {
         >
           <div className="relative aspect-[4/5] sm:aspect-[16/11] lg:aspect-[4/3] max-h-[68vh] rounded-[28px] overflow-hidden border border-[#E0ECE1] shadow-sm">
             <img
-              src="/images/hero-bar.jpg"
+              src={`${import.meta.env.BASE_URL}images/hero-bar.jpg`}
               alt="Safe-fu House Water-Flow Slow Bar and Bonsai"
               className="w-full h-full object-cover"
               fetchPriority="high"

@@ -228,7 +228,7 @@ export function MenuGrid() {
 
   // Dynamically sync menu items from API
   useEffect(() => {
-    fetch(API_BASE)
+    fetch(`${import.meta.env.BASE_URL}menu.json`)
       .then((res) => {
         if (res.ok) return res.json();
         throw new Error('API not available');
@@ -345,7 +345,7 @@ export function MenuGrid() {
                 {/* Image Container - Organic rounded with crisp light green border */}
                 <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden mb-5 bg-[#F4FAF5] border border-[#E0ECE1] shadow-sm group-hover:border-[#2E7D32] transition-colors duration-300">
                   <img
-                    src={item.image}
+                    src={item.image.startsWith('/') ? `${import.meta.env.BASE_URL}${item.image.slice(1)}` : item.image}
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
                     loading="lazy"

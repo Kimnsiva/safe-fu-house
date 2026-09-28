@@ -48,9 +48,11 @@ export function CategoryTiles() {
             >
               <div className="aspect-[3/4] overflow-hidden rounded-[26px] border border-[#E0ECE1] shadow-sm bg-[#F4FAF5]">
                 <img
-                  src={cat.image}
+                  src={cat.image.startsWith('/') ? `${import.meta.env.BASE_URL}${cat.image.slice(1)}` : cat.image}
                   alt={cat.name}
-                  className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
+                  className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="mt-6 mb-2 flex items-baseline justify-between">
