@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Pure Clean White #FFFFFF */
+    --foreground: 130 35% 14%; /* Deep Clean Matcha Forest #162E1A */
+
+    --card: 0 0% 100%; /* Pure Clean White #FFFFFF */
+    --card-foreground: 130 35% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 130 35% 14%;
+
+    --primary: 128 45% 33%; /* Vibrant Real Matcha Green #2E7535 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 130 35% 94%; /* Fresh Soft Matcha Tint #EBF5ED */
+    --secondary-foreground: 130 35% 14%;
+
+    --muted: 130 25% 96%; /* Clean Pale Green-White #F2F8F3 */
+    --muted-foreground: 130 15% 40%; /* Muted Green-Gray #506954 */
+
+    --accent: 128 45% 33%; /* Vibrant Real Matcha Green #2E7535 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 130 18% 90%; /* Crisp Clean Light Green Hairline #E0ECE1 */
+    --input: 130 18% 90%;
+    --ring: 128 45% 33%; /* Vibrant Real Matcha Green #2E7535 */
+
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
