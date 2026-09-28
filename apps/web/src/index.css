@@ -1,0 +1,39 @@
+@import '@safe-fu/ui/src/globals.css';
+
+/* ─── Typography & Base ─── */
+body {
+  font-family: 'Noto Sans', 'Noto Sans Thai', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  background-color: #FFFFFF;
+  color: #132A17;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scroll behavior ─── */
+html {
+  scroll-behavior: smooth;
+  background-color: #FFFFFF;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: #E8F5E9;
+  color: #1B5E20;
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8DBC9;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2E7D32;
+}

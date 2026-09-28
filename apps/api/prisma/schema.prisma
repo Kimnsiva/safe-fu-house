@@ -1,0 +1,140 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      String   @default("STAFF") // OWNER, STAFF
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  auditLogs AuditLog[]
+}
+
+model Category {
+  id        String     @id @default(cuid())
+  nameTh    String
+  nameEn    String
+  sortOrder Int        @default(0)
+  items     MenuItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model MenuItem {
+  id          String   @id @default(cuid())
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  nameTh      String
+  nameEn      String
+  descTh      String?
+  descEn      String?
+  priceThb    Int?
+  tag         String?
+  imageId     String?
+  image       Media?   @relation(fields: [imageId], references: [id])
+  available   Boolean  @default(true)
+  published   Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  orderItems  OrderItem[]
+}
+
+model Media {
+  id        String     @id @default(cuid())
+  url       String
+  alt       String?
+  width     Int?
+  height    Int?
+  blurhash  String?
+  createdAt DateTime   @default(now())
+  
+  menuItems MenuItem[]
+}
+
+model Workshop {
+  id        String         @id @default(cuid())
+  nameTh    String
+  nameEn    String
+  descTh    String?
+  descEn    String?
+  priceThb  Int
+  duration  Int            // minutes
+  slots     WorkshopSlot[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model WorkshopSlot {
+  id         String    @id @default(cuid())
+  workshopId String
+  workshop   Workshop  @relation(fields: [workshopId], references: [id])
+  startsAt   DateTime
+  capacity   Int
+  bookings   Booking[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Booking {
+  id             String       @id @default(cuid())
+  workshopSlotId String
+  slot           WorkshopSlot @relation(fields: [workshopSlotId], references: [id])
+  customerName   String
+  customerPhone  String
+  customerLineId String?
+  peopleCount    Int
+  status         String       @default("PENDING") // PENDING, CONFIRMED, CANCELLED
+  notes          String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  type          String      // PICKUP, DELIVERY
+  status        String      @default("NEW") // NEW, PREPARING, READY, DONE, CANCELLED
+  customerName  String?
+  customerPhone String?
+  notes         String?
+  items         OrderItem[]
+  totalAmount   Int
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model OrderItem {
+  id         String   @id @default(cuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id])
+  menuItemId String
+  menuItem   MenuItem @relation(fields: [menuItemId], references: [id])
+  quantity   Int
+  priceThb   Int
+  createdAt  DateTime @default(now())
+}
+
+model Setting {
+  key       String   @id
+  jsonValue String   // JSON string
+  updatedAt DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  action    String
+  entity    String
+  entityId  String
+  details   String?  // JSON string
+  createdAt DateTime @default(now())
+}

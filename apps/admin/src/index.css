@@ -1,0 +1,8 @@
+@import '@safe-fu/ui/src/globals.css';
+
+body {
+  font-family: 'Noto Sans', 'Noto Sans Thai', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #FAFAF8;
+  color: #1C221B;
+  -webkit-font-smoothing: antialiased;
+}
