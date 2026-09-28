@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AdminLayout } from './pages/Layout';
 import { Dashboard } from './pages/Dashboard';
 import { MenuManager } from './pages/MenuManager';
@@ -6,7 +6,7 @@ import { SettingsPage } from './pages/SettingsPage';
 
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
@@ -14,7 +14,7 @@ function App() {
           <Route path="settings" element={<SettingsPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

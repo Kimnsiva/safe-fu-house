@@ -58,7 +58,7 @@ export function Header() {
               <span>{i18n.language === 'th' ? 'EN' : 'TH'}</span>
             </button>
             <a
-              href={`${import.meta.env.BASE_URL}admin/index.html`}
+              href={`${import.meta.env.BASE_URL}admin/`}
               target="_blank"
               rel="noreferrer"
               className="hidden sm:inline-block text-[10px] tracking-[0.2em] uppercase px-4 py-1.5 rounded-full border border-matcha text-matcha hover:bg-matcha hover:text-white transition-all duration-300 font-medium"
@@ -74,7 +74,7 @@ export function Header() {
             <a href="#menu" onClick={() => setMobileOpen(false)} className="block text-[11px] tracking-[0.25em] uppercase text-forest/80 hover:text-matcha font-medium">{t('header.menu')}</a>
             <a href="#workshops" onClick={() => setMobileOpen(false)} className="block text-[11px] tracking-[0.25em] uppercase text-forest/80 hover:text-matcha font-medium">{t('header.workshops')}</a>
             <a href="#visit" onClick={() => setMobileOpen(false)} className="block text-[11px] tracking-[0.25em] uppercase text-forest/80 hover:text-matcha font-medium">{t('header.visit')}</a>
-            <a href={`${import.meta.env.BASE_URL}admin/index.html`} target="_blank" rel="noreferrer" className="block text-[11px] tracking-[0.25em] uppercase text-matcha font-medium pt-2">{t('header.admin')} →</a>
+            <a href={`${import.meta.env.BASE_URL}admin/`} target="_blank" rel="noreferrer" className="block text-[11px] tracking-[0.25em] uppercase text-matcha font-medium pt-2">{t('header.admin')} →</a>
           </div>
         )}
       </nav>
