@@ -16,7 +16,7 @@ export interface MenuItem {
   image: string;
 }
 
-const API_BASE = 'http://localhost:3000/api/v1/menu-items';
+
 
 const fallbackMenuItems: MenuItem[] = [
   // ─── Ceremonial Grade Matcha ───
